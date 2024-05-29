@@ -29,7 +29,7 @@ import multiprocessing as mp
 import os
 import sys
 from logging.handlers import QueueHandler, QueueListener, RotatingFileHandler
-from typing import NamedTuple
+from typing import NamedTuple, List
 
 from statemachine import StateMachine, State
 
@@ -116,7 +116,7 @@ class LoggingMachine(StateMachine):
         self._logger = self._initialize_bt_logger(name)
         self.disable_third_party_loggers()
 
-    def _configure_handlers(self, config) -> list[stdlogging.Handler]:
+    def _configure_handlers(self, config) -> List[stdlogging.Handler]:
         handlers = list()
 
         # stream handler, a given
